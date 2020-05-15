@@ -1,26 +1,28 @@
 <template>
   <div>
-    <nav class="navbar has-shadow">
-      <div class="container">
-        <a class="navbar-brand" href="/">
-          <img alt="vue logo" :style="{ width: '80px', height: '80px' }" src="../assets/logo.png" />
-        </a>
-      </div>
-    </nav>
+    <app-header></app-header>
     <section class="section">
-    </section>
-    <footer class="footer">
-      <div class="container">
-        <div class="content has-text-centered">
-          Follow us on
-          <a href="https://twitter.com/bstravroulakis" target="_blank">Twitter </a>
-        </div>
+      <div class="container content">
+        <category></category>
       </div>
-    </footer>
+    </section>
+    <app-footer></app-footer>
   </div>
 </template>
 <script>
-export default {};
+import AppHeader from './AppHeader.vue';
+import AppFooter from './AppFooter';
+import Category from './Category';
+export default {
+  components: {
+    'app-footer': AppFooter,
+    'app-header': AppHeader,
+    category: Category,
+  },
+};
 </script>
 <style style="scss">
+.columns {
+  flex-wrap: wrap;
+}
 </style>
