@@ -1,20 +1,19 @@
 <template>
   <div class="columns">
     <div class="column is-one-third" v-for="p in posts" :key="p.id">
-      <div class="card">
-        <div class="card-content">
-          <h3>{{ p.title }}</h3>
-          {{ p.content }}
-        </div>
-        <footer class="card-footer">
-          <a class="card-footer-item" :href="p.link" target="_blank">Read More</a>
-        </footer>
-      </div>
+     <app-post :link="p.link">
+         <h3 slot="title">{{ p.title }}</h3>
+         <span slot="content">{{ p.content }}</span>
+    </app-post>
     </div>
   </div>
 </template>
 <script>
+import Post from './Post';
 export default {
+    components: {
+        'app-post': Post
+    },
   data() {
     return {
       posts: [
