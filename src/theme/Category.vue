@@ -1,22 +1,23 @@
 <template>
   <div class="columns">
     <div class="column is-one-third" v-for="p in posts" :key="p.id">
-     <app-post :link="p.link">
-         <h3 slot="title">{{ p.title }}</h3>
-         <span slot="content">{{ p.content }}</span>
-    </app-post>
+      <app-post :link="p.link">
+        <h3 slot="title">{{ p.title }}</h3>
+        <span slot="content">{{ p.content }}</span>
+      </app-post>
     </div>
   </div>
 </template>
 <script>
 import Post from './Post';
 export default {
-    components: {
-        'app-post': Post
-    },
+  components: {
+    'app-post': Post,
+  },
   data() {
     return {
-      posts: [
+      id: this.$route.params.id,
+      postsFrontEnd: [
         {
           id: 1,
           title: 'PWA Stats',
@@ -38,6 +39,8 @@ export default {
           link:
             'https://medium.freecodecamp.com/so-whats-this-graphql-thing-i-keep-hearing-about-baf4d36c20cf',
         },
+      ],
+      postsMobile: [
         {
           id: 4,
           title: 'State of The Mobile Gap Between Native and Web',
@@ -59,7 +62,26 @@ export default {
           link: 'https://css-tricks.com/power-custom-directives-vue/',
         },
       ],
+      posts: [],
     };
+  },
+  methods: {
+    loadPosts() {
+      if (this.id === 'front-end') {
+        this.posts = this.postsFrontEnd;
+      } else {
+        this.posts = this.postsMobile;
+      }
+    },
+  },
+  watch: {
+    '$route' (to) {
+      this.id = to.params.id
+      this.loadPosts()
+    }
+  },
+  created() {
+    this.loadPosts();
   },
 };
 </script>

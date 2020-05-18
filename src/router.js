@@ -6,7 +6,7 @@ import Login from './theme/Login.vue';
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/category/front-end', component: Category },
+  { path: '/category/:id', name: 'category', component: Category },
   { path: '/login', component: Login },
   { path: '/', redirect: '/category/front-end' },
 ];
