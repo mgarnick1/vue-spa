@@ -22,6 +22,19 @@ const appService = {
         });
     });
   },
+  getProfile() {
+    return new Promise((resolve) => {
+      axios
+        .get('/services/profile.php', {
+          headers: {
+            Authorization: `Bearer ${window.localStorage.getItem('token')}`,
+          },
+        })
+        .then((res) => {
+          resolve(res.data);
+        });
+    });
+  },
 };
 
 export default appService;
