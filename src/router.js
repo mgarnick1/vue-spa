@@ -6,12 +6,21 @@ import Login from './theme/Login.vue';
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/', component: Category },
+  { path: '/category/front-end', component: Category },
   { path: '/login', component: Login },
+  { path: '/', redirect: '/category/front-end' },
 ];
 
 const router = new VueRouter({
   mode: 'history',
+  linkActiveClass: 'is-active',
+  scrollBehavior: (to, from, savedPosition) => {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { x: 0, y: 0 };
+    }
+  },
   routes,
 });
 

@@ -1,9 +1,11 @@
 <template>
   <nav class="navbar has-shadow">
     <div class="container">
-      <a class="navbar-brand" href="/">
-        <img alt="vue logo" :style="{ width: '80px', height: '80px' }" src="../assets/logo.png" />
-      </a>
+      <router-link class="navbar-brand" to="/" exact>
+        <img alt="Vue SPA logo" :style="{ width: '80px', height: '80px' }" src="../assets/logo.png" />
+      </router-link>
+      <router-link class="navbar-item is-tab" to="/category/front-end" exact>Home</router-link>
+      <router-link class="navbar-item is-tab" to="/login">Login</router-link>
     </div>
   </nav>
 </template>
